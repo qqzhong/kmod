@@ -1,0 +1,16 @@
+# android@Church:/data/tmp/kmodule$ /usr/bin/gcc --version 
+# gcc (Ubuntu 7.5.0-3ubuntu1~18.04) 7.5.0
+# /data/church/kernel/msm-5.4/scripts/Lindent
+
+TARGET  := hello
+WARN    := -W -Wall -Wstrict-prototypes -Wmissing-prototypes
+INCLUDE := -Isystem -I/lib/modules/`uname -r`/build/include
+CFLAGS  := -O2 -DMODULE -D__KERNEL__ ${WARN} ${INCLUDE}
+CC      := gcc
+
+${TARGET}.o: ${TARGET}.c
+
+.PHONY: clean
+
+clean:
+	rm -rf {TARGET}.o

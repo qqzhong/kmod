@@ -1,0 +1,13 @@
+# /data/church/kernel/msm-5.4/scripts/Lindent
+
+CC=gcc
+MODCFLAGS := -O -Wall -DMODULE -D__KERNEL__
+
+hello.o:	hello2_start.o hello2_stop.o
+	ld -m elf_i386 -r -o hello2.o hello2_start.o hello2_stop.o
+
+start.o: hello2_start.c
+	${CC} ${MODCFLAGS} -c hello2_start.c
+
+stop.o: hello2_stop.c
+	${CC} ${MODCFLAGS} -c hello2_stop.c
